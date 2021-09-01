@@ -1,0 +1,26 @@
+<div class="text-center">
+  <label>Server Name</label>
+  <!-- (input)="onUpdateServerName($event)" -->
+  <!-- ------- Two Way Binding ------- -->
+  <input type="text" class="form-control" [(ngModel)]="serverName" />
+  <!-- <p>Name: {{ serverName }}</p> -->
+  <button
+    class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()"
+  >
+    Add new Server
+  </button>
+  <!-- <p>{{ serverCreationStatus }}</p> -->
+  <!-- - Added to DOM with this hook - -->
+  <!-- template-bindings={
+    "ng-reflect-ng-if": true
+  }-->
+  <p *ngIf="serverCreated; else noServer">{{ serverCreationStatus }}</p>
+  <!-- --- Adding Local Referance ---- -->
+  <ng-template #noServer>
+    <p>Add server with name.</p>
+  </ng-template>
+</div>
+<app-server-test></app-server-test>
+<app-server-test></app-server-test>

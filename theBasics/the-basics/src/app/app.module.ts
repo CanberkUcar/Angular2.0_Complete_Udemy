@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 /* ------- Imported Component ------- */
 import { ServerTestComponent } from './server-test/server-test.component';
-import { ServersComponent } from './servers/servers.component';
+import { ServerElementComponent } from './server-element/server-element.component';
 
 /**
  * * 4 Main Object Properities.
@@ -17,7 +17,7 @@ import { ServersComponent } from './servers/servers.component';
  */
 
 @NgModule({
-  declarations: [AppComponent, ServerTestComponent, ServersComponent],
+  declarations: [AppComponent, ServerTestComponent, ServerElementComponent],
   imports: [BrowserModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

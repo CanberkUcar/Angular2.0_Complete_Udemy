@@ -1,5 +1,11 @@
-// * Core Package is basic angular functionalities.
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 
 @Component({
   // * Mainly HTML-tag for DOM Purposes to reuse.
@@ -11,14 +17,42 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ServerTestComponent implements OnInit {
   // * Values for String Interpolation Example.
-  serverId: number = 10;
-  serverStatus: String = 'offline';
+  // serverId: number = 10;
+  // serverStatus: String = 'offline';
 
   // * Function for String Interpolation Example.
-  getServerStatus() {
-    return this.serverStatus;
-  }
+  // getServerStatus() {
+  //   return this.serverStatus;
+  // }
+
+  @Output() serverCreated = new EventEmitter<{
+    serverName: string;
+    serverContent: string;
+  }>();
+  @Output('bpCreated') blueprintCreated = new EventEmitter<{
+    serverName: string;
+    serverContent: string;
+  }>();
+  // newServerName = '';
+  // newServerContent = '';
+  @ViewChild('serverContentInput', { static: true })
+  serverContentInput: ElementRef;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
+
+  onAddServer(nameInput: HTMLInputElement) {
+    this.serverCreated.emit({
+      serverName: nameInput.value,
+      serverContent: this.serverContentInput.nativeElement.value,
+    });
+  }
+
+  onAddBlueprint(nameInput: HTMLInputElement) {
+    this.blueprintCreated.emit({
+      serverName: nameInput.value,
+      serverContent: this.serverContentInput.nativeElement.value,
+    });
+  }
 }

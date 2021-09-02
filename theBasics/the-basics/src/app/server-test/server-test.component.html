@@ -1,2 +1,36 @@
-<!-- String Interpolation -->
-<h3>Server with ID: {{ serverId }} is {{ getServerStatus() }}</h3>
+<div class="text-center">
+  <label>Server Name</label>
+  <!-- (input)="onUpdateServerName($event)" -->
+  <!-- ------- Two Way Binding ------- -->
+  <!-- <input type="text" class="form-control" [(ngModel)]="serverName" /> -->
+  <!-- <p>Name: {{ serverName }}</p> -->
+  <input type="text" class="form-control" #serverNameInput />
+  <label>Server Content</label>
+
+  <!-- <button
+    class="btn btn-primary"
+    [disabled]="!allowNewServer"
+    (click)="onCreateServer()"
+  >
+    Add new Server
+  </button> -->
+  <!-- <p>{{ serverCreationStatus }}</p> -->
+  <!-- - Added to DOM with this hook - -->
+  <!-- template-bindings={
+    "ng-reflect-ng-if": true
+  }-->
+  <!-- <p *ngIf="serverCreated; else noServer">{{ serverCreationStatus }}</p> -->
+  <!-- --- Adding Local Referance ---- -->
+  <!-- <ng-template #noServer>
+    <p>Add server with name.</p>
+  </ng-template> -->
+
+  <input type="text" class="form-control" #serverContentInput />
+  <br />
+  <button class="btn btn-primary" (click)="onAddServer(serverNameInput)">
+    Add Server
+  </button>
+  <button class="btn btn-primary" (click)="onAddBlueprint(serverNameInput)">
+    Add Server Blueprint
+  </button>
+</div>
